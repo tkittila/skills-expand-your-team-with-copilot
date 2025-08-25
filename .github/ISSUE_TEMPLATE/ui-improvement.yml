@@ -1,0 +1,164 @@
+name: User Interface Improvement
+description: Make the website easier to use for students and teachers
+title: "[UI] Improve "
+labels: ["enhancement", "ui-improvement"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## User Interface Improvement Request
+        
+        Help us make the activities website more user-friendly! Share your ideas for improving how students and teachers interact with the system.
+        
+        **Note:** Please be specific about what you'd like to see changed and why it would help users.
+
+  - type: dropdown
+    id: improvement_area
+    attributes:
+      label: What area needs improvement? *
+      description: Focus on the main area you'd like to see enhanced
+      options:
+        - Activity browsing/searching
+        - Student registration process
+        - Teacher login/authentication
+        - Activity information display
+        - Schedule/time filtering
+        - Mobile phone usability
+        - Overall website navigation
+        - Error messages and feedback
+        - Accessibility features
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: user_type
+    attributes:
+      label: Who would this help most? *
+      description: Which users would benefit from this improvement?
+      options:
+        - Students browsing activities
+        - Teachers managing registrations
+        - Both students and teachers
+        - Parents viewing activities
+        - School administrators
+    validations:
+      required: true
+
+  - type: textarea
+    id: current_problem
+    attributes:
+      label: What's difficult or confusing now? *
+      description: Describe what makes the current interface challenging to use
+      placeholder: |
+        Example: Students have trouble finding activities that meet after school because all activities are mixed together in one long list.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed_solution
+    attributes:
+      label: What would you like to see instead? *
+      description: Describe your ideal solution or improvement
+      placeholder: |
+        Example: Add clear time-of-day categories like "Before School", "After School", and "Weekend" so students can quickly find activities that fit their schedule.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: How important is this improvement? *
+      description: Help us prioritize this request
+      options:
+        - Critical - preventing people from using the system
+        - High - would make a big difference in daily use
+        - Medium - nice to have improvement
+        - Low - minor enhancement
+    validations:
+      required: true
+
+  - type: textarea
+    id: user_story
+    attributes:
+      label: User Story *
+      description: Complete this sentence to help us understand the goal
+      placeholder: |
+        As a [student/teacher/parent], I want to [do something] so that I can [achieve a goal].
+        
+        Example: As a student, I want to see how many spots are left in each activity so that I can prioritize which activities to join first.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: specific_features
+    attributes:
+      label: Specific Features (if applicable)
+      description: Check any specific features you'd like to see
+      options:
+        - label: Better search functionality
+        - label: Improved mobile responsiveness
+        - label: Clearer activity categories
+        - label: Better time/schedule display
+        - label: Progress indicators
+        - label: Confirmation messages
+        - label: Help text or tooltips
+        - label: Keyboard navigation
+        - label: Better color contrast
+        - label: Simplified forms
+
+  - type: textarea
+    id: examples
+    attributes:
+      label: Examples or Inspiration
+      description: Any examples of other websites or apps that do this well?
+      placeholder: e.g., The way our school's lunch menu website shows different meal options, or how Netflix organizes movies by category
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Success Criteria *
+      description: How will you know this improvement is working well?
+      placeholder: |
+        Example:
+        - Students can find relevant activities 50% faster
+        - Fewer questions from students about how to use the website
+        - Teachers report the registration process is simpler
+        - Website works well on both computers and phones
+        - New users can figure out how to use it without help
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        
+        ## 📋 Implementation Context for Copilot Agent
+        
+        **Current UI Stack:**
+        - Frontend: HTML, CSS, JavaScript (no frameworks)
+        - Styling: Custom CSS with CSS variables in `/src/static/styles.css`
+        - Interactions: Vanilla JavaScript in `/src/static/app.js`
+        - Layout: Single-page application with modal dialogs
+        
+        **Design Principles:**
+        - Simple and intuitive for non-technical users
+        - School-appropriate colors and styling
+        - Mobile-responsive design
+        - Accessible to students with different abilities
+        - Fast loading on school network
+        
+        **Implementation Areas:**
+        - HTML structure: `/src/static/index.html`
+        - CSS styling: `/src/static/styles.css`
+        - JavaScript behavior: `/src/static/app.js`
+        - Backend API responses: `/src/backend/routers/activities.py`
+        
+        **Constraints:**
+        - Keep code simple for easy maintenance
+        - No additional JavaScript frameworks/libraries
+        - Must work in school browsers (Chrome, Firefox, Safari, Edge)
+        - Consider students using phones during lunch/breaks
+        - Maintain professional appearance for school setting

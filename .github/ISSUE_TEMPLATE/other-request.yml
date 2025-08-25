@@ -1,0 +1,122 @@
+name: Other Request
+description: General request that doesn't fit other categories
+title: "[OTHER] "
+labels: ["question"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## General Request
+        
+        Have a request that doesn't fit into our other categories? Use this form to share your needs and we'll help determine the best approach.
+        
+        **Note:** The more details you provide, the better we can understand and help with your request.
+
+  - type: input
+    id: request_title
+    attributes:
+      label: Request Title *
+      description: Briefly describe what you need
+      placeholder: e.g., Help setting up email notifications, Question about user permissions
+    validations:
+      required: true
+
+  - type: dropdown
+    id: request_category
+    attributes:
+      label: Best Category *
+      description: Which area is closest to your request?
+      options:
+        - System setup/configuration
+        - User account management
+        - Technical support/help
+        - Process improvement
+        - Documentation request
+        - Training/guidance needed
+        - Integration with other systems
+        - Security/permissions
+        - Not sure
+    validations:
+      required: true
+
+  - type: textarea
+    id: detailed_request
+    attributes:
+      label: Detailed Description *
+      description: Explain your request in detail
+      placeholder: |
+        Please describe:
+        - What you're trying to accomplish
+        - Any specific requirements or constraints
+        - Why this is needed
+        - Any deadline or timeline considerations
+    validations:
+      required: true
+
+  - type: dropdown
+    id: urgency_level
+    attributes:
+      label: Urgency Level *
+      description: How soon do you need this addressed?
+      options:
+        - Urgent - blocking current work
+        - High - needed within a few days
+        - Medium - needed within a week or two
+        - Low - nice to have when possible
+    validations:
+      required: true
+
+  - type: textarea
+    id: attempted_solutions
+    attributes:
+      label: What have you tried already?
+      description: Have you attempted any solutions or workarounds?
+      placeholder: e.g., Tried asking IT department, looked through documentation, attempted manual process
+
+  - type: textarea
+    id: success_criteria
+    attributes:
+      label: Success Criteria *
+      description: How will you know when this request is successfully resolved?
+      placeholder: |
+        Example:
+        - I can successfully complete [specific task]
+        - The process takes less time than current method
+        - Students/teachers report improved experience
+        - System works reliably without manual intervention
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: Additional Context
+      description: Any other information that might be helpful?
+      placeholder: e.g., This affects multiple teachers, related to upcoming school event, similar to system we used last year
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        
+        ## 📋 Context for Review
+        
+        **This request will be reviewed to determine:**
+        - Whether it fits better in one of our specific template categories
+        - What technical approach would be most appropriate
+        - Priority level and timeline for implementation
+        - Whether additional clarification is needed
+        
+        **Common areas we can help with:**
+        - Activities management system enhancements
+        - User interface improvements
+        - Data export and reporting
+        - System integration questions
+        - Process automation
+        - User training and documentation
+        
+        **If your request is more urgent, please also:**
+        - Contact the school IT department directly
+        - Reach out via email or phone for immediate assistance
+        - Consider if there's a temporary workaround available

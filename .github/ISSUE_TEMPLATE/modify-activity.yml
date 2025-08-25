@@ -1,0 +1,181 @@
+name: Modify Existing Activity
+description: Request changes to an existing club, team, or activity
+title: "[MODIFY] Update "
+labels: ["enhancement", "modify-activity"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Modify Existing Activity Request
+        
+        Need to update details for an existing activity? Please provide the information below so we can make the necessary changes.
+        
+        **Note:** All fields marked with * are required to help the Copilot coding agent implement your changes correctly.
+
+  - type: dropdown
+    id: existing_activity
+    attributes:
+      label: Activity to Modify *
+      description: Which activity needs to be updated? (If not listed, it may need to be added first)
+      options:
+        - Chess Club
+        - Programming Class
+        - Morning Fitness
+        - Soccer Team
+        - Basketball Team
+        - Art Club
+        - Drama Club
+        - Math Club
+        - Tennis Club
+        - Robotics Club
+        - Book Club
+        - Debate Team
+        - Science Club
+        - Manga Maniacs
+        - Other (specify in description)
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: changes_needed
+    attributes:
+      label: What needs to be changed? *
+      description: Select all that apply
+      options:
+        - label: Activity name
+        - label: Description
+        - label: Meeting schedule (days/times)
+        - label: Maximum participants
+        - label: Supervising teacher
+        - label: Activity category/type
+        - label: Other (explain below)
+    validations:
+      required: true
+
+  - type: input
+    id: new_activity_name
+    attributes:
+      label: New Activity Name
+      description: Only fill this if changing the activity name
+      placeholder: e.g., Advanced Chess Club, Competitive Programming
+
+  - type: textarea
+    id: new_description
+    attributes:
+      label: New Description
+      description: Only fill this if changing the activity description
+      placeholder: Enter the updated description that students will see
+
+  - type: checkboxes
+    id: new_meeting_days
+    attributes:
+      label: New Meeting Days
+      description: Only select if changing the schedule. Which days should the activity meet?
+      options:
+        - label: Monday
+        - label: Tuesday
+        - label: Wednesday
+        - label: Thursday
+        - label: Friday
+        - label: Saturday
+        - label: Sunday
+
+  - type: input
+    id: new_start_time
+    attributes:
+      label: New Start Time
+      description: Only fill this if changing start time
+      placeholder: e.g., 3:30 PM, 7:00 AM, 2:15 PM
+
+  - type: input
+    id: new_end_time
+    attributes:
+      label: New End Time
+      description: Only fill this if changing end time
+      placeholder: e.g., 5:00 PM, 8:30 AM, 4:00 PM
+
+  - type: input
+    id: new_max_participants
+    attributes:
+      label: New Maximum Participants
+      description: Only fill this if changing participant limit
+      placeholder: e.g., 15, 25, 30
+
+  - type: input
+    id: new_supervisor
+    attributes:
+      label: New Supervising Teacher
+      description: Only fill this if changing the supervising teacher
+      placeholder: e.g., Ms. Rodriguez, Mr. Chen, Principal Martinez
+
+  - type: dropdown
+    id: new_category
+    attributes:
+      label: New Activity Category
+      description: Only select if changing the activity category
+      options:
+        - ""
+        - Sports/Athletics
+        - Academic/Educational  
+        - Arts/Creative
+        - Community Service
+        - Technology/STEM
+        - Social/Club
+        - Other
+
+  - type: textarea
+    id: reason_for_change
+    attributes:
+      label: Reason for Changes *
+      description: Why are these changes needed? This helps prioritize the request.
+      placeholder: e.g., Schedule conflict with another activity, increased student interest requires more spots, teacher change
+    validations:
+      required: true
+
+  - type: textarea
+    id: current_participants
+    attributes:
+      label: Impact on Current Participants
+      description: Are there students already registered? How should they be handled?
+      placeholder: e.g., Keep all current participants, notify them of schedule change, need to reduce numbers
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance Criteria *
+      description: How will you know this request is complete? Be specific about what you expect to see.
+      placeholder: |
+        Example:
+        - Activity shows updated information on the website
+        - Schedule changes are reflected correctly
+        - Existing participants remain enrolled (or are handled as specified)
+        - New limits/requirements are enforced
+        - Any name changes are updated throughout the system
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        
+        ## 📋 Implementation Context for Copilot Agent
+        
+        **School Information:**
+        - School: Mergington High School (grades 9-12) 
+        - School year: August to May, 3 trimesters + optional summer cycle
+        - Motto: "Branch out and grow"
+        
+        **Technical Hints:**
+        - Modify activity in `initial_activities` dictionary in `/src/backend/database.py`
+        - Preserve existing participant data unless specifically requested to change
+        - Update activity key if name changes (may require data migration)
+        - Use 24-hour time format for schedule_details (e.g., "15:30" for 3:30 PM)
+        - Test changes appear correctly in web interface filters and displays
+        
+        **Limitations:**
+        - Changes only persist until server restart (in-memory storage)
+        - Cannot reduce max_participants below current enrollment without handling participants
+        - Schedule changes should respect school hours (6:00 AM - 9:00 PM)
+        - Activity key changes may affect existing URLs/bookmarks

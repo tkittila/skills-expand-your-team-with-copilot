@@ -1,4 +1,27 @@
 
+# Mergington High School Activities System
+
+A streamlined system for managing extracurricular activities at Mergington High School. Students can browse and sign up for activities, while teachers can manage registrations and access helpful tools.
+
+## 🏫 For Teachers: Requesting Changes
+
+**Need something changed or added to the activities system?** We've made it simple!
+
+👉 **[Submit a Request Using Our Templates](../../issues/new/choose)** 👈
+
+Our issue templates help you provide all the details needed for quick, accurate implementation. Choose from:
+- 🆕 **Add New Activity** - Create new clubs or activities
+- ✏️ **Modify Existing Activity** - Change schedules, descriptions, or limits  
+- 🐛 **Bug Report** - Fix something that's not working
+- 🎨 **UI Improvement** - Make the website easier to use
+- ⭐ **Feature Request** - Add new functionality
+- 📊 **Data Request** - Export lists or reports
+- 🤔 **Other** - General questions or help
+
+📖 **[Read the Teacher Guide](docs/teacher-issue-guide.md)** for detailed instructions and examples.
+
+---
+
 <div align="center">
 
 # 🎉 Congratulations tkittila! 🎉

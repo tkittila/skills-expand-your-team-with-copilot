@@ -1,0 +1,200 @@
+name: Data & Reporting Request
+description: Request data exports, reports, or participant information
+title: "[DATA] "
+labels: ["enhancement", "data-request"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Data & Reporting Request
+        
+        Need information about activities, participants, or system usage? Request the data or reports you need here.
+        
+        **Note:** Please be specific about what information you need and how you plan to use it to help us provide the most useful format.
+
+  - type: dropdown
+    id: request_type
+    attributes:
+      label: Type of Data Request *
+      description: What kind of information do you need?
+      options:
+        - Participant lists for specific activities
+        - Complete roster of all activities
+        - Activity enrollment statistics
+        - Student participation summary
+        - Schedule conflicts report
+        - Attendance tracking data
+        - Teacher assignment information
+        - System usage analytics
+        - Custom report
+        - Other
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: specific_activities
+    attributes:
+      label: Specific Activities (if applicable)
+      description: Which activities do you need information about?
+      options:
+        - label: Chess Club
+        - label: Programming Class
+        - label: Morning Fitness
+        - label: Soccer Team
+        - label: Basketball Team
+        - label: Art Club
+        - label: Drama Club
+        - label: Math Club
+        - label: Tennis Club
+        - label: Robotics Club
+        - label: Book Club
+        - label: Debate Team
+        - label: Science Club
+        - label: Manga Maniacs
+        - label: All activities
+
+  - type: dropdown
+    id: data_scope
+    attributes:
+      label: Time Period *
+      description: What time period should this data cover?
+      options:
+        - Current trimester only
+        - Entire school year
+        - Specific date range (specify below)
+        - All available data
+        - Real-time/current data only
+    validations:
+      required: true
+
+  - type: input
+    id: date_range
+    attributes:
+      label: Specific Date Range (if applicable)
+      description: If you selected "specific date range" above, provide the dates
+      placeholder: e.g., September 1 - December 15, 2024
+
+  - type: textarea
+    id: data_purpose
+    attributes:
+      label: Purpose of Request *
+      description: How will you use this information? This helps us format it appropriately.
+      placeholder: |
+        Example: Need participant lists to create emergency contact sheets for field trips, or want enrollment statistics for planning next year's activities
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: data_fields
+    attributes:
+      label: Information Needed
+      description: What specific details do you need included? (Check all that apply)
+      options:
+        - label: Student names
+        - label: Student email addresses
+        - label: Activity names
+        - label: Meeting schedules
+        - label: Enrollment numbers
+        - label: Available spots remaining
+        - label: Teacher supervisors
+        - label: Registration dates
+        - label: Activity categories
+        - label: Student grade levels
+        - label: Contact information
+
+  - type: dropdown
+    id: output_format
+    attributes:
+      label: Preferred Format *
+      description: How would you like to receive this data?
+      options:
+        - Excel spreadsheet (.xlsx)
+        - CSV file (opens in Excel)
+        - PDF report
+        - Email list format
+        - Printed report
+        - On-screen display only
+        - Other (specify below)
+    validations:
+      required: true
+
+  - type: textarea
+    id: format_notes
+    attributes:
+      label: Format Requirements
+      description: Any specific formatting needs or special requirements?
+      placeholder: e.g., Sorted by student last name, separate sheets for each activity, include header with school name
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: When do you need this? *
+      description: Timeline for receiving the requested data
+      options:
+        - Today (urgent)
+        - Within a few days
+        - Within a week
+        - Within a month
+        - No specific deadline
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional_requirements
+    attributes:
+      label: Additional Requirements
+      description: Any other specific needs or constraints?
+      placeholder: e.g., Need to exclude students who haven't returned permission slips, only include students in grades 10-12
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance Criteria *
+      description: How will you know this request is complete? What must the data include?
+      placeholder: |
+        Example:
+        - Report includes all registered students for Chess Club and Math Club
+        - Data is current as of today's date
+        - Format allows easy import into our contact management system
+        - Includes both student names and email addresses
+        - Data is accurate and matches current registration system
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        
+        ## 📋 Implementation Context for Copilot Agent
+        
+        **Data Sources:**
+        - Activity data: `initial_activities` in `/src/backend/database.py`
+        - Teacher data: `initial_teachers` in `/src/backend/database.py`
+        - Live participant lists stored in MongoDB collections
+        - Registration timestamps and status information
+        
+        **Available Data Fields:**
+        - Activities: name, description, schedule, max_participants, current participants
+        - Schedule: days, start_time, end_time (24-hour format)
+        - Participants: email addresses (format: firstname@mergington.edu)
+        - Teachers: username, display_name, role
+        
+        **Implementation Options:**
+        - Add new API endpoint for data export: `/activities/export` or `/reports/[type]`
+        - Create data formatting functions in backend
+        - Generate CSV/JSON output that can be saved as Excel
+        - Add frontend interface for teachers to request reports
+        - Consider adding download links or email delivery
+        
+        **Privacy Considerations:**
+        - Student email addresses are included - ensure appropriate access controls
+        - Consider teacher authentication requirements for sensitive data
+        - May need to log who requested what data and when
+        
+        **Technical Notes:**
+        - Current data is in-memory (MongoDB collections)
+        - Data format is consistent and structured
+        - Export functions should handle empty activities gracefully
+        - Consider adding date/time stamps to exported data
