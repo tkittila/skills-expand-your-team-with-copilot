@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 🚨 Emergency IT Support
+    url: mailto:it@mergington.edu
+    about: For urgent technical issues affecting daily operations
+  - name: 📞 School Main Office
+    url: tel:555-0123
+    about: General school questions or non-technical requests
+  - name: 📖 How to Use GitHub Issues
+    url: https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues
+    about: Learn more about using GitHub issues effectively

@@ -1,0 +1,178 @@
+name: Bug Report
+description: Report something that isn't working correctly
+title: "[BUG] "
+labels: ["bug"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Bug Report
+        
+        Found something that's not working as expected? Help us fix it by providing the details below.
+        
+        **Note:** Please be as specific as possible so the Copilot coding agent can identify and fix the issue quickly.
+
+  - type: dropdown
+    id: bug_area
+    attributes:
+      label: What part of the system has the bug? *
+      description: This helps us focus on the right area
+      options:
+        - Student registration/signup
+        - Teacher login
+        - Activity display/listing
+        - Schedule filtering
+        - Participant management
+        - Website loading/performance
+        - Data not saving
+        - Error messages
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: bug_description
+    attributes:
+      label: What's happening? *
+      description: Describe what you're experiencing in simple terms
+      placeholder: |
+        Example: When I try to sign up a student for Chess Club, I get an error message and the student doesn't get added to the list.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected_behavior
+    attributes:
+      label: What should happen instead? *
+      description: Describe what you expected to work
+      placeholder: |
+        Example: The student should be added to Chess Club and I should see a success message.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps_to_reproduce
+    attributes:
+      label: Steps to Reproduce *
+      description: Help us recreate the problem by listing the exact steps
+      placeholder: |
+        Example:
+        1. Go to the activities website
+        2. Click on Chess Club
+        3. Enter student email: john@mergington.edu
+        4. Click Register
+        5. Error appears instead of success
+    validations:
+      required: true
+
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: How often does this happen? *
+      description: This helps us understand the severity
+      options:
+        - Every time I try
+        - Most of the time
+        - Sometimes
+        - Only happened once
+        - Not sure
+    validations:
+      required: true
+
+  - type: input
+    id: student_email
+    attributes:
+      label: Student Email (if relevant)
+      description: If this involves a specific student, what's their email?
+      placeholder: e.g., student@mergington.edu
+
+  - type: input
+    id: activity_name
+    attributes:
+      label: Activity Name (if relevant)
+      description: If this involves a specific activity, which one?
+      placeholder: e.g., Chess Club, Soccer Team
+
+  - type: textarea
+    id: error_message
+    attributes:
+      label: Error Message
+      description: If you see an error message, copy it exactly here
+      placeholder: Copy and paste any error text you see
+
+  - type: dropdown
+    id: device_type
+    attributes:
+      label: What device are you using?
+      description: This can help identify device-specific issues
+      options:
+        - Computer/Laptop
+        - Tablet
+        - Phone
+        - Not sure
+
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Web Browser
+      description: Which browser are you using?
+      options:
+        - Chrome
+        - Firefox
+        - Safari
+        - Edge
+        - Other
+        - Not sure
+
+  - type: textarea
+    id: additional_info
+    attributes:
+      label: Additional Information
+      description: Anything else that might help us understand the problem?
+      placeholder: e.g., This started happening after lunch, affects multiple students, works fine on my home computer
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: How will we know it's fixed? *
+      description: What should work correctly when this bug is resolved?
+      placeholder: |
+        Example:
+        - Student registration completes successfully
+        - No error messages appear
+        - Student appears in participant list
+        - Process works for all activities and all students
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        
+        ## 📋 Implementation Context for Copilot Agent
+        
+        **School Information:**
+        - School: Mergington High School 
+        - Users: Teachers (for registration) and Students (for viewing)
+        - Email format: firstname@mergington.edu
+        
+        **Common Bug Areas:**
+        - Authentication: Check teacher login validation in `/src/backend/routers/auth.py`
+        - Registration: Check signup logic in `/src/backend/routers/activities.py`
+        - Data display: Check frontend JavaScript in `/src/static/app.js`
+        - Database: Check data initialization in `/src/backend/database.py`
+        - UI: Check styling and responsive design in `/src/static/styles.css`
+        
+        **Debugging Hints:**
+        - Check browser console for JavaScript errors
+        - Verify API endpoints return expected data format
+        - Test with sample data: teachers (mrodriguez/art123, mchen/chess456)
+        - Validate email format and authentication requirements
+        - Ensure MongoDB connection and data persistence
+        
+        **Testing:**
+        - Test fix with multiple browsers and devices
+        - Verify all user roles (students viewing, teachers registering)
+        - Check edge cases (full activities, invalid emails, etc.)

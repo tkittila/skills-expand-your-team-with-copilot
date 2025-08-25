@@ -1,0 +1,195 @@
+name: Feature Request
+description: Request new functionality for the activities system
+title: "[FEATURE] Add "
+labels: ["enhancement", "feature-request"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## New Feature Request
+        
+        Have an idea for new functionality that would improve the activities system? Share your vision with us!
+        
+        **Note:** Please describe both what you want and why it would be valuable to help us prioritize development.
+
+  - type: input
+    id: feature_name
+    attributes:
+      label: Feature Name *
+      description: What should this new feature be called?
+      placeholder: e.g., Waitlist Management, Activity Notifications, Attendance Tracking
+    validations:
+      required: true
+
+  - type: dropdown
+    id: feature_category
+    attributes:
+      label: Feature Category *
+      description: What type of functionality is this?
+      options:
+        - Student Management (registration, profiles, preferences)
+        - Teacher Tools (reporting, management, communication)
+        - Data & Reporting (exports, analytics, summaries)
+        - Communication (notifications, messages, announcements)
+        - Scheduling (calendar integration, time management)
+        - Administrative (user management, settings, permissions)
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: feature_description
+    attributes:
+      label: Feature Description *
+      description: Describe what this feature should do in detail
+      placeholder: |
+        Example: Create a waitlist system so when an activity is full, students can still sign up for a waiting list. If someone drops out, the first person on the waitlist automatically gets their spot and receives a notification.
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem_solving
+    attributes:
+      label: What problem does this solve? *
+      description: Explain the current challenge or need this feature would address
+      placeholder: |
+        Example: Currently when popular activities fill up, students miss out completely. Teachers also have to manually track interested students and remember to contact them if spots open up.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: user_benefit
+    attributes:
+      label: Who would benefit most? *
+      description: Which users would find this feature most valuable?
+      options:
+        - Students
+        - Teachers
+        - Parents
+        - School administrators
+        - Everyone
+    validations:
+      required: true
+
+  - type: dropdown
+    id: feature_priority
+    attributes:
+      label: Priority Level *
+      description: How important is this feature?
+      options:
+        - Critical - system can't function well without it
+        - High - would significantly improve daily operations
+        - Medium - nice improvement but not essential
+        - Low - would be convenient but not necessary
+    validations:
+      required: true
+
+  - type: textarea
+    id: user_workflow
+    attributes:
+      label: How would users interact with this feature? *
+      description: Walk through the step-by-step process of using this feature
+      placeholder: |
+        Example:
+        1. Student tries to register for full activity
+        2. System shows "Activity full - Join waitlist?" button
+        3. Student clicks to join waitlist
+        4. Student receives confirmation they're #3 on waitlist
+        5. When spot opens, student gets email notification
+        6. Student has 24 hours to confirm their registration
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: feature_components
+    attributes:
+      label: Feature Components
+      description: What parts would this feature need? (Check all that apply)
+      options:
+        - label: New web pages or sections
+        - label: Email notifications
+        - label: Data storage/database changes
+        - label: Teacher management tools
+        - label: Student-facing interface
+        - label: Automated processes
+        - label: Reporting/export capabilities
+        - label: Integration with existing features
+        - label: New user permissions/roles
+
+  - type: textarea
+    id: similar_systems
+    attributes:
+      label: Examples or References
+      description: Are there other systems (school or non-school) that do something similar?
+      placeholder: e.g., Like how the library system handles book holds, or how course registration works at the high school level
+
+  - type: textarea
+    id: success_metrics
+    attributes:
+      label: How would we measure success? *
+      description: What would indicate this feature is working well?
+      placeholder: |
+        Example:
+        - 90% of waitlisted students successfully register when spots open
+        - Teachers spend 50% less time managing full activities
+        - Student satisfaction scores improve for activity registration
+        - Fewer complaints about missing out on popular activities
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance Criteria *
+      description: What specific functionality must work for this feature to be considered complete?
+      placeholder: |
+        Example:
+        - Students can join waitlists for full activities
+        - Waitlist position is clearly displayed to students
+        - Automatic notifications are sent when spots open
+        - Teachers can view and manage waitlists
+        - System prevents overbooking when processing waitlists
+        - Students can remove themselves from waitlists
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        
+        ## 📋 Implementation Context for Copilot Agent
+        
+        **Current System Architecture:**
+        - Backend: FastAPI (Python) with MongoDB storage
+        - Frontend: HTML, CSS, JavaScript (no frameworks)
+        - Authentication: Teacher login required for student registration
+        - Data: In-memory storage (resets on restart)
+        
+        **Existing Features to Consider:**
+        - Activity management and display
+        - Student registration with email validation
+        - Teacher authentication system
+        - Participant limit enforcement
+        - Schedule filtering and search
+        - Real-time UI updates
+        
+        **Development Constraints:**
+        - Keep code simple for easy maintenance by non-technical staff
+        - Use only HTML, CSS, JavaScript, and Python
+        - Maintain fast performance on school network
+        - Ensure mobile compatibility
+        - Follow existing code patterns and structure
+        
+        **Integration Points:**
+        - Activities API: `/src/backend/routers/activities.py`
+        - Database models: `/src/backend/database.py`
+        - Frontend interactions: `/src/static/app.js`
+        - UI components: `/src/static/index.html` and `/src/static/styles.css`
+        
+        **School Context:**
+        - 100-150 students per grade (grades 9-12)
+        - 3 trimesters + optional summer cycle
+        - Email format: firstname@mergington.edu
+        - School motto: "Branch out and grow"

@@ -1,0 +1,145 @@
+name: Add New Activity
+description: Request to add a new club, team, or activity to the school system
+title: "[NEW ACTIVITY] Add "
+labels: ["enhancement", "new-activity"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Add New Activity Request
+        
+        Thank you for helping expand our extracurricular offerings! Please provide the details below so we can add your new activity to the system.
+        
+        **Note:** All fields marked with * are required and help ensure the Copilot coding agent has enough information to implement your request without needing clarification.
+
+  - type: input
+    id: activity_name
+    attributes:
+      label: Activity Name *
+      description: What should this activity be called in the system?
+      placeholder: e.g., Chess Club, Volleyball Team, Creative Writing Club
+    validations:
+      required: true
+
+  - type: textarea
+    id: activity_description
+    attributes:
+      label: Activity Description *
+      description: Write a brief description that will appear to students (2-3 sentences recommended)
+      placeholder: e.g., Learn strategic thinking and compete in chess tournaments. Students of all skill levels welcome. We meet regularly to practice and play friendly matches.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: activity_category
+    attributes:
+      label: Activity Category *
+      description: What type of activity is this?
+      options:
+        - Sports/Athletics
+        - Academic/Educational  
+        - Arts/Creative
+        - Community Service
+        - Technology/STEM
+        - Social/Club
+        - Other
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: meeting_days
+    attributes:
+      label: Meeting Days *
+      description: Which days will this activity meet? (Select all that apply)
+      options:
+        - label: Monday
+        - label: Tuesday
+        - label: Wednesday
+        - label: Thursday
+        - label: Friday
+        - label: Saturday
+        - label: Sunday
+    validations:
+      required: true
+
+  - type: input
+    id: start_time
+    attributes:
+      label: Start Time *
+      description: What time does the activity start?
+      placeholder: e.g., 3:30 PM, 7:00 AM, 2:15 PM
+    validations:
+      required: true
+
+  - type: input
+    id: end_time
+    attributes:
+      label: End Time *
+      description: What time does the activity end?
+      placeholder: e.g., 5:00 PM, 8:30 AM, 4:00 PM
+    validations:
+      required: true
+
+  - type: input
+    id: max_participants
+    attributes:
+      label: Maximum Participants *
+      description: What's the maximum number of students that can join?
+      placeholder: e.g., 15, 25, 30
+    validations:
+      required: true
+
+  - type: input
+    id: supervisor_teacher
+    attributes:
+      label: Supervising Teacher
+      description: Which teacher will supervise this activity?
+      placeholder: e.g., Ms. Rodriguez, Mr. Chen, Principal Martinez
+
+  - type: textarea
+    id: special_requirements
+    attributes:
+      label: Special Requirements or Notes
+      description: Any special equipment, location needs, or other important details?
+      placeholder: e.g., Requires gym access, needs art supplies, meets in computer lab
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance Criteria *
+      description: How will you know this request is complete? Be specific about what you expect to see.
+      placeholder: |
+        Example:
+        - New activity appears in the activities list on the website
+        - Students can register for the activity
+        - Activity shows correct schedule and description
+        - Participant limit is enforced (shows spots remaining)
+        - Activity is properly categorized for filtering
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        
+        ## 📋 Implementation Context for Copilot Agent
+        
+        **School Information:**
+        - School: Mergington High School (grades 9-12)
+        - Students: 100-150 per grade level
+        - School year: August to May, 3 trimesters + optional summer cycle
+        - Student email format: firstname@mergington.edu
+        
+        **Technical Hints:**
+        - Add new activity to `initial_activities` dictionary in `/src/backend/database.py`
+        - Use 24-hour time format for schedule_details (e.g., "15:30" for 3:30 PM)
+        - Ensure activity name is unique and follows existing naming patterns
+        - Test that activity appears correctly in web interface with proper filtering
+        
+        **Limitations:**
+        - All data stored in memory (resets on server restart)
+        - Teacher authentication required for student registration
+        - Activities must fit within school day constraints (6:00 AM - 9:00 PM)
+        - Maximum 50 participants per activity (system limitation)
